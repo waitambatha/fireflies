@@ -34,7 +34,7 @@ The **Fireflies Transcript Sync** project is a Django-based application designed
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/fireflies.git
+   git clone https://github.com/waitambatha/fireflies.git
    cd fireflies
 Create and activate a virtual environment:
 
