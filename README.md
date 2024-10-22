@@ -26,7 +26,7 @@ The **Fireflies Transcript Sync** project is a Django-based application designed
 
 - Python 3.x
 - Django 3.x or later
-- PostgreSQL
+- sqlite
 - pip (Python package installer)
 
 ### Installation
