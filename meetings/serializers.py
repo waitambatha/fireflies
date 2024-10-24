@@ -32,3 +32,26 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['user_id'] = self.user.id
         data['username'] = self.user.username
         return data
+class TranscriptSummarySerializer(serializers.Serializer):
+    transcriptId = serializers.CharField(required=True)
+
+
+class UploadAudioSerializer(serializers.Serializer):
+    webhook = serializers.URLField(required=True)
+    audio_url = serializers.URLField(required=True)
+    title = serializers.CharField(max_length=255, required=True)
+    attendees = serializers.ListField(
+        child=serializers.DictField(
+            child=serializers.CharField(),
+            required=False
+        ),
+        required=False,
+        allow_empty=True
+    )
+
+
+
+
+
+
+

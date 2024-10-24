@@ -1,15 +1,23 @@
 import requests
 from decouple import config
+
+
 class FirefliesClient:
-    BASE_URL = config('FIREFLIES_BASE_URL')
+    BASE_URL = config('FIREFLIES_BASE_URL')  # Example: 'https://api.fireflies.ai/graphql'
     API_KEY = config('FIREFLIES_API_KEY')
 
-    def get_transcripts(self):
+    def get_users(self):
+        url = self.BASE_URL
         headers = {
-            'Authorization': f'Bearer {self.API_KEY}',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {self.API_KEY}'
         }
-        response = requests.get(f'{self.BASE_URL}/transcripts', headers=headers)
+        data = {
+            'query': '{ users { name user_id } }'
+        }
+
+        response = requests.post(url, json=data, headers=headers)
+
         if response.status_code == 200:
             return response.json()
         else:
