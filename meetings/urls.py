@@ -1,6 +1,6 @@
 
 from rest_framework.routers import DefaultRouter
-from .views import TranscriptViewSet, RegisterView, CustomTokenObtainPairView ,TranscriptListView
+from .views import TranscriptViewSet, RegisterView, CustomTokenObtainPairView ,TranscriptListView , UploadAudioView , TranscriptSummaryView
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import permissions
@@ -26,9 +26,11 @@ router.register(r'transcripts', TranscriptViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-path('transcriptslist/', TranscriptListView.as_view(), name='transcript-list'),
+    path('transcriptslist/', TranscriptListView.as_view(), name='transcript-list'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('transcript-summary/', TranscriptSummaryView.as_view(), name='transcript-summary'),
+    path('upload-audio/', UploadAudioView.as_view(), name='upload-audio'),
     path('login/', CustomTokenObtainPairView.as_view(), name='login'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
